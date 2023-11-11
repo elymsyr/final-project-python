@@ -2,7 +2,7 @@ import pandas as pd
 
 class StatCsv():
     def __init__(self) -> None:
-        self.df = pd.read_csv('stats.csv')
+        self.df = pd.read_csv('stats.csv', sep=',')
     
     def writer(self):
         self.df.to_csv('stats.csv', index=False)

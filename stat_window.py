@@ -10,7 +10,7 @@ class StatisticsWindow:
         
     def create_(self):
         self.root = tk.Tk()
-        self.root.geometry("410x550")
+        self.root.geometry("410x670")
         self.root.title('Statistics')
         self.root.iconbitmap("letter-g.ico")  # attributes for icon to popo2021, https://www.flaticon.com/free-icons/letter-g"
         self.stats = StatCsv()
