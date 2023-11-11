@@ -113,8 +113,7 @@ class BattleshipGame:
                 self.bottom_label.config(text=f"YOU WIN {self.you}")
                 self.stat.change_battleship_stats(self.you)
                 self.stop_game()
-            
-                
+        
     def stop_game(self):
         for row in self.your_board:
             for ship in row:
@@ -307,6 +306,8 @@ class BattleshipGame:
         else: pass
 
     def player_ship_placement(self, button):
+        """Game starts with this condition to let the player to place the ships. 
+        """
         if button not in self.your_ships:
             self.player_ship_placement_check = button
             self.color_sides(button)

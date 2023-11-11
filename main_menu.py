@@ -155,7 +155,7 @@ class MainMenu():
         hard = messagebox.askyesno(title="Difficulty", message="Hard Mode? (No to try stat storage in csv.)")
         self.stats.increase_played(0)
         if hard:
-            new_game = BoardSudoku(9, 50)
+            new_game = BoardSudoku()
         else: new_game = BoardSudoku(9, 1)
 
     def button2_click(self):

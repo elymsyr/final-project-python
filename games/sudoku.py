@@ -30,7 +30,7 @@ class SquareEach():
             print("Please enter a valid value!")
 
 class BoardSudoku():
-    def __init__(self, N=9, K=40) -> None:
+    def __init__(self, N=9, K=30) -> None:
         self.N = N
         self.K = K
         self.master = tkinter.Tk()

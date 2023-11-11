@@ -4,13 +4,16 @@ from stat_control import StatCsv
 class StatisticsWindow:
     def __init__(self):
         self.game_stats = None
+        self.create_()
+        self.create_window()
+        self.root.mainloop()
+        
+    def create_(self):
         self.root = tk.Tk()
         self.root.geometry("410x550")
         self.root.title('Statistics')
         self.root.iconbitmap("letter-g.ico")  # attributes for icon to popo2021, https://www.flaticon.com/free-icons/letter-g"
         self.stats = StatCsv()
-        self.create_window()
-        self.root.mainloop()
     
     def create_window(self):
 
@@ -69,6 +72,26 @@ class StatisticsWindow:
             scores_text += ", "
         s_s = tk.Label(self.root, text=f"Last Scores: {scores_text[:-2]}", font=('Helvetica', 14))
         s_s.pack()
+        
+        battleship_stats = self.stats.return_battleship_stats()
+        
+        stats_label = tk.Label(self.root, text=f'Statistics for Battleship', font=('Helvetica', 20))
+        stats_label.pack()
+        b_games_played_label = tk.Label(self.root, text=f"Games Played: {battleship_stats['times']}", font=('Helvetica', 15))
+        b_games_played_label.pack()
+
+        b_h = tk.Label(self.root, text=f"Highscore: {str(battleship_stats['highscore'])[:5]}", font=('Helvetica', 14))
+        b_h.pack()
+
+        b_w = tk.Label(self.root, text=f"Wins: {battleship_stats['win']}", font=('Helvetica', 14))
+        b_w.pack()
+        last_scores = [(str(score)[:4]) for score in battleship_stats['last_scores']]
+        scores_text = ""
+        for score in last_scores:
+            scores_text += score
+            scores_text += ", "
+        b_s = tk.Label(self.root, text=f"Last Scores: {scores_text[:-2]}", font=('Helvetica', 14))
+        b_s.pack()
 
         reset_button = tk.Button(self.root, text='Reset Stats', command=self.reset, font=('Helvetica', 12))
         reset_button.pack()        
@@ -81,6 +104,8 @@ class StatisticsWindow:
     def reset(self):
         self.stats.reset_stats()
         self.root.destroy()
+        self.create_()
+        self.create_window()
     
     def clear(self):
         for widget in self.root.winfo_children():

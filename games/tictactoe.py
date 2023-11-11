@@ -18,6 +18,7 @@ class TicTacToe():
         self.game_board = Tk()
         self.game_board.iconbitmap("letter-g.ico")  # attributes for icon to popo2021, https://www.flaticon.com/free-icons/letter-g"
         self.game_board.title("Tic Tac Toe")
+        self.game_board.resizable(0,0)
         self.player = Button(self.game_board, text="Player X", width=10)
         self.player.grid(row=1, column=1)
         self.computer = Button(self.game_board, text="Computer O", width=10, state=DISABLED)
